@@ -1,0 +1,51 @@
+/////////////////////////// Masa Guide
+
+https://developers.masa.finance/docs/incentivized-testnet
+
+Phase 3
+https://app.masa.finance/app/node-operators
+
+Guide from mzonder: https://mzonder.notion.site/MASA-clean-install-v1-03-testnet-2-0-binary-509ec340a2ec4aa9ae8c7bfe7a9f3e9a
+
+# Start service
+sudo systemctl daemon-reload
+sudo systemctl enable masad
+sudo systemctl restart masad && journalctl -u masad -f -o cat
+sudo systemctl status masad
+
+# status ETH node
+geth attach ipc:$HOME/masa-node-v1.0/data/geth.ipc
+
+root@vmi837835:~/masa-node-v1.0# geth attach ipc:$HOME/masa-node-v1.0/data/geth.ipc
+Welcome to the Geth JavaScript console!
+
+instance: Geth/donchicken/v1.10.0-stable(quorum-v22.1.0)/linux-amd64/go1.18.3
+coinbase: 0x4ff07eaaf5a7275a6e262a9aba61d3a74e55cdf3
+at block: 0 (Wed Dec 31 1969 18:00:00 GMT-0600 (CST))
+ datadir: /root/masa-node-v1.0/data
+ modules: admin:1.0 debug:1.0 eth:1.0 istanbul:1.0 miner:1.0 net:1.0 personal:1.0 rpc:1.0 txpool:1.0 web3:1.0
+
+To exit, press ctrl-d
+> admin.nodeInfo.enode
+"enode://938123f3ab6e233367bf202cba9b6c3385b8ea45ae85e9edb526504ead4ff257d9923d0805d344c23abb1aa4bc053b28703cfb82733a57269262a5749cf9611d@127.0.0.1:30300"
+>
+---------------- check
+geth attach ipc:$HOME/masa-node-v1.0/data/geth.ipc
+
+net.peerCount
+eth.syncing
+eth.blockNumber
+admin.peers
+admin.nodeInfo
+
+-------------------- Add peer
+
+
+admin.addPeer("enode://eb0b7b308eb041ae9b75cac334552e44408e1e39a7852a6ed5c9ab9a125da7db6b32b8e083f192a2fb1d311dc9948620affa1e5e7fadf13f8306792027716545@65.108.221.203:21000")
+admin.addPeer("enode://163687ec1da1537ef366dbec7c988f4f3e6a4d3daec24b6ae54189b1d4b287bb21f646b657251d51480ac468ae3dbef43b69b430c884277bbdc18e6a7e447071@65.108.221.203:21001")
+admin.addPeer("enode://4f63cdd8fc002296c6ff2bdc280c82b8c9a1c3856be9993ebd8d5c1f2704b77a4c2ce134acda5f5a681746cfdbf722e92e0dca0b743521aa2b396e4efa146ac7@65.108.221.203:21002")
+admin.addPeer("enode://44d96acd9e2ff6fe1d81b304ffdf2565d94828e706af22f378c65d3d272dbe38ff2cc4648946259375d7e1ae8be69728566b32ba06b0958b482577edb16f18ff@65.108.221.203:21003")
+admin.addPeer("enode://6f51179b8d9b29488f1820d8a2718fde46a8a6bb8d8bac84dfabf19c9bd6f6db937f3749821a98e37763fcedae6aa62ed03c8c1593bbf6f5f6b6f619ab2c304c@65.108.221.203:21004")
+admin.addPeer("enode://40a3296244397f6b9e5204bb06b0def5337995402f4ba3b14c173db7511a7ebe4d4dd358e5355b9c21b62b985f358e924e1c34869e6b69da0f7f6003e8334448@34.135.227.140:21000")
+admin.addPeer("enode://7612454dd41a6d13138b565a9e14a35bef4804204d92e751cfe2625648666b703525d821f34ffc198fac0d669a12d5f47e7cf15de4ebe65f39822a2523a576c4@81.29.137.40:30300")
+
